@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class Main {
+public class AnagrammFinder {
 
     public static void main(String[] args) throws IOException {
         long startTime = System.nanoTime();
