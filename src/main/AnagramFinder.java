@@ -1,9 +1,7 @@
 package main;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -54,7 +52,8 @@ public class AnagramFinder {
     private static List<String> findAnagramsFromTextFile(String target, String path) throws IOException {
         List<String> words = new ArrayList<>();
         File file = new File(path);
-        BufferedReader reader = new BufferedReader(new FileReader(file));
+        InputStreamReader streamReader = new InputStreamReader(new FileInputStream(file), StandardCharsets.ISO_8859_1);
+        BufferedReader reader = new BufferedReader(streamReader);
         String line;
         while ((line = reader.readLine()) != null) {
             if (line.length() == target.length() && isAnagram(target, line))
@@ -62,6 +61,5 @@ public class AnagramFinder {
         }
         return words;
     }
-
 
 }
