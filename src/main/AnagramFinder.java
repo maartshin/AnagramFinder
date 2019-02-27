@@ -2,19 +2,21 @@ package main;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class AnagramFinder {
 
     public static void main(String[] args) throws IOException {
         long startTime = System.nanoTime();
 
+        if(args.length < 2) {
+            throw new RuntimeException("Not enough arguments: [path] [word]");
+        }
+
         String path = args[0];
         String word = args[1];
-        List<String> anagrams = findAnagramsFromTextFile(word, path);
+
+        List<String> anagrams = findAnagramsFromFile(word, path);
 
         printResult(startTime, anagrams);
     }
@@ -49,7 +51,7 @@ public class AnagramFinder {
         return characterMap;
     }
 
-    private static List<String> findAnagramsFromTextFile(String target, String path) throws IOException {
+    public static List<String> findAnagramsFromFile(String target, String path) throws IOException {
         List<String> words = new ArrayList<>();
         File file = new File(path);
         InputStreamReader streamReader = new InputStreamReader(new FileInputStream(file), StandardCharsets.ISO_8859_1);
@@ -61,5 +63,4 @@ public class AnagramFinder {
         }
         return words;
     }
-
 }
