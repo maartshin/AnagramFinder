@@ -1,5 +1,5 @@
 # AnagramFinder
 Find anagrams from file.
 
-Running
+Running  
 java main.AnagramFinder [path] [word]
