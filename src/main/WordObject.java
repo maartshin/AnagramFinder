@@ -31,7 +31,8 @@ public class WordObject {
             if (curCount == null) {
                 return false;
             }
-            curCount = mapCopy.get(charBuffer[i]) == null ? curCount : mapCopy.get(charBuffer[i]);
+            Integer mapCopyCount = mapCopy.get(charBuffer[i]);
+            curCount = mapCopyCount == null ? curCount : mapCopyCount;
             if (curCount == 0) {
                 return false;
             }
